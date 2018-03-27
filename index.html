@@ -1,0 +1,595 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <!-- font fam -->
+    <link href="https://fonts.googleapis.com/css?family=Qwigley|Merriweather|Oswald" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Practice page</title> 
+    
+    <link href="reset.css" type="text/css" rel="stylesheet">
+        
+    <!-- main styles -->
+
+    <style>
+      html {
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      @media (min-width: 992px) {
+        html {
+          font-size: 18px;
+        }
+      }
+    
+     a {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      a:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      
+      header {
+        width: 100%;
+        height: auto;
+        padding: 1rem 1rem 3rem 1rem;
+        overflow: visible;
+        background-image: url(assets/pic01.jpg); 
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+      }
+      
+      .nav-row {
+        height: 1.5rem;
+      }
+      
+      .menu-text {
+        font-family: "oswald";
+        text-transform: uppercase;
+        font-size: .8rem;
+        text-align: center;
+        color: rgba(235,235,235,.8);
+        font-weight: 400;
+        padding: .25rem;
+        transition: all .80s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      
+      .register {
+        text-align: right;
+        border-right: .1rem solid rgba(235,235,235,.8);
+      }
+      
+      .menu-hover::after {
+        content: attr(data-text);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        left: 0;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        font-family: oswald;
+        color: whitesmoke;
+        opacity: 0;
+        transform: translate3d(0, 25%, 0);
+        transition: all .80s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      
+      .menu-hover:hover .menu-text {
+        opacity: 0;
+        transform: translate3d(0, -25%, 0);
+        cursor: pointer;
+      }
+      
+      .menu-hover:hover:after {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        cursor: pointer;
+      }
+      
+      .mountain {
+        position: relative;
+        top: -.5rem;
+      }
+      
+      .mountain-title {
+        font-family: "oswald";
+        font-size: 1rem;
+        font-weight: bold;
+        color: whitesmoke;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      
+      .mountain-title::before {
+        content: '';
+        position: absolute;
+        border-top: .1rem solid whitesmoke;
+        width: 40%;
+        left: 2.5%;
+        top: 25%;
+      }
+
+      .mountain-title::after {
+        content: '';
+        position: absolute;
+        border-top: .1rem solid whitesmoke;
+        width: 40%;
+        right: 2.5%;
+        top: 25%;
+      }
+      
+      .small-text {
+        font-family: "qwigley";
+        font-size: 1.25rem;
+        color: rgba(235,235,235,.8);
+        text-align: center;
+        word-spacing: .15rem
+      }
+      
+      .hr {
+        width: 5%;
+        height: .1rem;
+        background: whitesmoke;
+        position: relative;
+        left: 47.5%;
+        margin: 2rem 0;
+      }
+      
+      .little-title {
+        position: relative;
+        font-family: oswald;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: whitesmoke;
+        letter-spacing: .2rem;
+      }
+      
+      .title {
+        position: relative;
+        font-family: oswald;
+        font-size: 5.25rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: whitesmoke;
+        letter-spacing: -.1rem;
+        margin-top: 0;
+        padding-top: 0;
+      }
+      
+      .diamond-filled {
+        color: rgba(0,0,0,.9);
+        background: whitesmoke;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        left: calc(50% - .75rem);
+        text-align: center;
+        font-family: qwigley;
+        font-size: .8rem;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        padding-top: .4rem;
+      }
+      
+      .diamond {
+        border: .1rem solid rgba(200,200,200,.6);
+        background: transparent;
+        clip-path: none;
+        transform-origin: center center;
+        transform: rotate(45deg);
+        width: 1.1rem;
+        height: 1.1rem;
+        left: calc(50% - .55rem);
+        transition: all .3s ease;
+      }
+      
+      .diamond:hover {
+        background: whitesmoke;
+        cursor: pointer;
+      }
+      
+      .vertical-line {
+        position: relative;
+        top: 0;
+        left: calc(50% - .05rem);
+        width: .1rem;
+        height: 1rem;
+        background: rgba(200,200,200,.6);
+      }
+
+      .avatar {
+        position: relative;
+        width: 3.5rem;
+        height: 3.5rem;
+        left: calc(50% - 1.75rem);
+        margin-top: 4rem;
+        background-image: url(assets/avatar.jpg);
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0% 50%);
+      }
+      
+      .avatar-text{
+        color: rgb(235,235,235);
+        font-family: merriweather;
+        font-size: .8rem;
+        text-align: center;
+      }
+      
+      strong {
+        font-weight: bold;
+        color: whitesmoke;
+      }
+      
+      .connect {
+        position: absolute;
+        height: auto;
+        width: auto;
+        left: calc(50% - .25rem);
+        margin-top: -3rem;
+      }
+      
+      .circle {
+        background: rgb(200,200,200);
+        height: .5rem;
+        width: .5rem;
+        border-radius: 50%;
+        position: relative;
+        left: calc(50% - .25rem);
+      }
+      
+      .line02 {
+        width: .1rem;
+        height: 4rem;
+        position: relative;
+        left: calc(50% - .05rem);
+        background: rgb(200,200,200);
+      }
+      
+      /* wrapper-1 */
+      
+      .wrapper-1 {
+        background-image: url(assets/pic02.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 1rem;
+        margin-bottom: -12rem;
+        padding-bottom: 12rem;
+      }
+      
+      .num {
+        text-align: center;
+        font-family: oswald;
+        font-size: 4rem;
+        color: rgb(110,50,0);
+        margin-top: 3rem;
+      }
+      
+      .condi-title {
+        font-family: oswald;
+        text-align: center;
+        font-size: 2.5rem;
+        color: rgba(0,0,0,.8);
+        letter-spacing: .5rem;
+        text-transform: uppercase;
+        margin-top: 2rem;
+      }
+      
+      .icon-wrap {
+        position: relative;
+        width: 4rem;
+        left: calc(50% - 2rem);
+      }
+      
+      .border02 {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: .15rem solid rgb(200,200,200);
+        transform-origin: center;
+        transform: rotate(45deg);
+        display: inline-block;
+        margin: .15rem;
+        overflow: hidden;
+      }
+      
+      .icon {
+        width: 2rem;
+        height: 2rem;
+        transform-origin: center;
+        transform: rotate(-45deg);
+        background-image: url(assets/icon01.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      
+      .icon01 {
+        background: transparent;
+        color: rgb(200,200,200);
+        transition-timing-function: oswald;
+        text-align: center;
+        font-size: .8rem;
+      }
+      
+      .text01 {
+        font-family: merriweather;
+        font-size: .7rem;
+        color: rgba(0,0,0,.6);
+        line-height: 1.3rem;
+        font-weight: bold;
+      }
+      
+      /* wrapper-2 */
+      
+      .wrapper-2 {
+        width: 100%;
+        background-image: url(assets/pic03.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        clip-path: polygon(0 0, 100% 12rem, 100% calc(100% - 12rem), 0 100%);
+        padding: 8rem 1rem;
+      }
+      
+      .wrapper-2 .text01 {
+        color: rgba(250,210,150,.8);
+      }
+      
+      .wrapper-2 .condi-title {
+        color: rgb(235,235,235);
+      }
+      
+      .connect02 {
+        margin-top: -1rem;
+        z-index: 1;
+      }
+      
+      .line03 {
+        height: 8rem;
+      }
+      
+      .wrapper-2 .num {
+        margin-top: 1rem;
+      }
+      
+      .box {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        width: 8rem;
+        height: 3rem;
+        position: relative;
+        left: calc(50% - 4rem);
+        border: .15rem solid rgb(110,50,0);
+      }
+      
+      .diamond02 {
+        width: 3.5rem;
+        height: 3.5rem;
+        position: absolute;
+        left: calc(50% - 1.75rem);
+        background: rgb(110,50,0);
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        top: 0;
+        transform: translateY(-50%);
+      }
+      
+      .path-btn {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        left: 10%;
+        height: 2rem;
+        border: .15rem solid rgb(110,50,0);
+        transform: translateY(50%);
+        color: rgb(235,235,235);
+        font-family: oswald;
+        text-align: center;
+        font-size: .85em;
+        text-transform: uppercase;
+        padding-top: .4rem;
+        background: rgb(30,10,10);
+      }
+      
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    </style>
+  </head>
+  
+  <header>
+    <div class="row justify-content-center nav-row mt-3 mb-0">
+      <div class="col-2"></div>
+      <div class="col-3 p-0 m-0">
+        <div class="row justify-content-end m-0">
+          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="STORIES">
+            <h6 class="menu-text">stories</h6>
+          </div>
+          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="ADVENTURES">
+            <h6 class="menu-text">adventures</h6>
+          </div>
+          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="LEGENDS">
+            <h6 class="menu-text">legends</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <svg class="mountain" width="100%" height="100%" viewBox="5 0 60 15">
+          <path d="M0,10.9h15.3l2.5,2.3l7.9-7.4l3,2.3l7.9-7.4l15.3,12.5l2.5-2.5H70" stroke="rgba(235,235,235,.9)" stroke-width=".1rem" fill="none"></path>
+        </svg>
+      </div>
+      <div class="col-3 p-0 m-0">
+        <div class="row justify-content-start m-0">
+          <div class="col-4 p-0 menu-hover" data-text="EXPERIMENT">
+            <h6 class="menu-text">experiment</h6>
+          </div>
+          <div class="col-4 p-0 menu-hover" data-text="TEAM">
+            <h6 class="menu-text">team</h6>
+          </div>
+          <div class="col-4 p-0 menu-hover" data-text="EVENTS">
+            <h6 class="menu-text">events</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-2 p-0 m-0">
+        <div class="row">
+          <div class="col-6 p-0">
+            <h6 class="menu-text register">sign up</h6>
+          </div>
+          <div class="col-6 p-0">
+            <h6 class="menu-text" style="text-align: left;">log in</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-0 mb-5">
+      <div class="col-12">
+        <h5 class="mountain-title">great adventure</h5>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center mt-5">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <p class="small-text">A story from <strong>Henrik</strong></p>
+            <div class="hr"></div>
+          </div>
+        <div class="col-12 pb-0 mb-0">
+          <h2 class="little-title pb-0 mb-0">deep silence of a mountain</h2>
+      </div>
+        <div class="col-12 pt-0 mt-0">
+          <h1 class="title pt-0 mt-0">mauna kea</h1>
+        </div>
+    </div>
+    </div>
+      <div class="col-1">
+        <div class="diamond-filled">I</div>
+        <div class="vertical-line"></div>
+        <div class="diamond-filled diamond"></div>
+        <div class="vertical-line"></div>
+        <div class="diamond-filled diamond"></div>
+        <div class="vertical-line"></div>
+        <div class="diamond-filled diamond"></div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <div class="avatar"></div>
+        <p class="avatar-text mt-2">Featured story<br><strong>John Doe</strong></p>
+      </div>
+    </div>
+  </header>
+  
+  <div class="wrapper-1">
+    
+    <div class="connect">
+      <div class="circle"></div>
+      <div class="line02"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-7">
+        <h5 class="num">01</h5>
+        <p class="small-text" style="color: rgb(200,200,200);">Chapter</p>
+      </div>
+      <div class="col-12">
+        <h2 class="condi-title">conditions</h2>
+      </div>
+    </div>
+    <div class="icon-wrap mt-4">
+      <div class="border02">
+        <div class="icon icon01">-2°</div>
+      </div>
+      <div class="border02">
+        <div class="icon"></div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center mt-5">
+      <div class="col-4 p-0 mr-3">
+        <p class="text01">Lorem ipsum dolor sit amet, aliquid intellegebat cu nec, ex porro dicit graecis est. Mutat constituam an pro, iriure offendit et sea, eos elitr solet veritus no. Errem ancillae ne ius, te sed vocibus deleniti. Usu nisl tollit ornatus no, tempor maiestatis vel ea, graeco insolens democritum et sea. Qui saperet euripidis no, ferri laudem cu vix, facer constituam id his.</p>
+      </div>
+      <div class="col-4 p-0 ml-3">
+        <p class="text01">Nec et nihil verear. Regione partiendo vim at. Quo albucius vulputate et, an eos posse viris, et mel falli essent sensibus. Cu ius sonet libris, vis agam dolor affert no, ignota nusquam efficiendi an his. In sea nobis iriure intellegebat, quo cu solet tation commune, diam oblique in quo.</p>
+      </div>
+    </div>
+  </div>
+  
+    <div class="connect connect02">
+      <div class="circle"></div>
+      <div class="line02 line03"></div>
+      <div class="circle"></div>
+    </div>
+  
+  <div class="wrapper-2">
+    <div class="row justify-content-center">
+      <div class="col-7">
+        <h5 class="num">02</h5>
+        <p class="small-text" style="color: rgb(200,200,200);">Chapter</p>
+      </div>
+      <div class="col-12">
+        <h2 class="condi-title">the path</h2>
+      </div>
+    </div>
+    <div class="icon-wrap mt-4">
+      <div class="border02">
+        <div class="icon icon01">-2°</div>
+      </div>
+      <div class="border02">
+        <div class="icon"></div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+      <div class="col-5 p-0 ml-3">
+        <p class="text01">Nec et nihil verear. Regione partiendo vim at. Quo albucius vulputate et, an eos posse viris, et mel falli essent sensibus. Cu ius sonet libris, vis agam dolor affert no, ignota nusquam efficiendi an his. In sea nobis iriure intellegebat, quo cu solet tation commune, diam oblique in quo.</p>
+      </div>
+    </div>
+    
+    <div class="box">
+      <div class="diamond02"></div>
+      <div class="path-btn">get the route</div>
+    </div>
+  </div>
+  
+  <body>
+    
+     <!-- Optional JavaScript --> 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+  </body> 
+</html>
