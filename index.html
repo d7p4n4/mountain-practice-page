@@ -7,11 +7,11 @@
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     <!-- font fam -->
-    <link href="https://fonts.googleapis.com/css?family=Qwigley|Merriweather|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Qwigley|Source Sans Pro|Oswald" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
     
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <title>Practice page</title> 
     
     <link href="reset.css" type="text/css" rel="stylesheet">
@@ -48,6 +48,11 @@
         box-sizing: border-box;
       }
       
+      body {
+        position: relative;
+        z-index: -15;
+      }
+      
       header {
         width: 100%;
         height: auto;
@@ -57,22 +62,44 @@
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
-        clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+      }
+      
+      @media (min-width: 992px) {
+        header {
+        clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);  
+        }
       }
       
       .nav-row {
-        height: 1.5rem;
+        height: auto;
+      }
+      
+      @media (min-width: 992px) {
+        .nav-row {
+          height: 1.5rem;
+        }
       }
       
       .menu-text {
         font-family: "oswald";
         text-transform: uppercase;
-        font-size: .8rem;
+        font-size: 1rem;
         text-align: center;
         color: rgba(235,235,235,.8);
         font-weight: 400;
         padding: .25rem;
         transition: all .80s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      
+      .register-row {
+        display: flex;
+      }
+      
+      @media (min-width: 992px) {
+        .register-row {
+          display: none;
+        }
       }
       
       .register {
@@ -89,6 +116,7 @@
         left: 0;
         top: 0;
         margin: 0;
+        margin-top: 1rem;
         padding: 0;
         font-size: 1rem;
         font-family: oswald;
@@ -110,9 +138,26 @@
         cursor: pointer;
       }
       
+      .empty-row {
+        display: none;
+      }
+      
+      @media (min-width: 992px) {
+        .empty-row {
+          display: block;
+        }
+        
+        .menu-hover::after {
+          margin-top: 0;
+        }
+      }
+      
       .mountain {
         position: relative;
-        top: -.5rem;
+        top: 35%;
+        max-width: 8rem;
+        left: 50%;
+        transform: translateX(-50%);
       }
       
       .mountain-title {
@@ -128,7 +173,7 @@
         content: '';
         position: absolute;
         border-top: .1rem solid whitesmoke;
-        width: 40%;
+        width: 25%;
         left: 2.5%;
         top: 25%;
       }
@@ -137,14 +182,52 @@
         content: '';
         position: absolute;
         border-top: .1rem solid whitesmoke;
-        width: 40%;
+        width: 25%;
         right: 2.5%;
         top: 25%;
       }
       
+      @media (min-width: 528px) {
+        .mountain-title {
+          font-size: 1.25rem;
+        }
+        .mountain-title::after,
+        .mountain-title::before {
+          width: 30%;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        .mountain-title::after,
+        .mountain-title::before {
+          width: 35%;
+        }    
+      }
+      
+      @media (min-width: 992px) {
+        .mountain-title::after,
+        .mountain-title::before {
+          width: 37.5%;
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        .mountain-title {
+          font-size: 1.25rem;
+        }
+        .mountain-title::after,
+        .mountain-title::before {
+          width: 40%;
+        }
+        
+        .mountain {
+          top: 0;
+        }
+      }
+      
       .small-text {
         font-family: "qwigley";
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         color: rgba(235,235,235,.8);
         text-align: center;
         word-spacing: .15rem
@@ -162,7 +245,7 @@
       .little-title {
         position: relative;
         font-family: oswald;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-transform: uppercase;
         text-align: center;
         color: whitesmoke;
@@ -172,13 +255,27 @@
       .title {
         position: relative;
         font-family: oswald;
-        font-size: 5.25rem;
+        font-size: 3.5rem;
         text-transform: uppercase;
         text-align: center;
         color: whitesmoke;
         letter-spacing: -.1rem;
         margin-top: 0;
         padding-top: 0;
+      }
+      
+      @media (min-width: 992px) {
+        .small-text {
+          font-size: 1.25rem;
+        }
+        
+        .little-title {
+          font-size: 1.5rem;
+        }
+        
+        .title {
+          font-size: 5.25rem;
+        }
       }
       
       .diamond-filled {
@@ -236,9 +333,15 @@
       
       .avatar-text{
         color: rgb(235,235,235);
-        font-family: merriweather;
-        font-size: .8rem;
+        font-family: "source sans pro";
+        font-size: 1rem;
         text-align: center;
+      }
+      
+      @media (min-width: 992px) {
+        .avatar-text {
+          font-size: .9rem;
+        }
       }
       
       strong {
@@ -279,15 +382,15 @@
         background-repeat: no-repeat;
         background-position: center center;
         padding: 1rem;
-        margin-bottom: -12rem;
-        padding-bottom: 12rem;
+        margin-bottom: -13rem;
+        padding-bottom: 13rem;
       }
       
       .num {
         text-align: center;
         font-family: oswald;
         font-size: 4rem;
-        color: rgb(110,50,0);
+        color: rgb(99,50,32);
         margin-top: 3rem;
       }
       
@@ -298,7 +401,7 @@
         color: rgba(0,0,0,.8);
         letter-spacing: .5rem;
         text-transform: uppercase;
-        margin-top: 2rem;
+        margin-top: 1rem;
       }
       
       .icon-wrap {
@@ -323,7 +426,7 @@
         height: 2rem;
         transform-origin: center;
         transform: rotate(-45deg);
-        background-image: url(assets/icon01.jpg);
+        background-image: url(assets/icon01.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
@@ -338,11 +441,19 @@
       }
       
       .text01 {
-        font-family: merriweather;
-        font-size: .7rem;
-        color: rgba(0,0,0,.6);
-        line-height: 1.3rem;
-        font-weight: bold;
+        font-family: "source sans pro";
+        font-size: 1rem;
+        color: rgba(0,0,0,.75);
+        line-height: 1.2rem;
+        font-weight: 400;
+      }
+      
+      @media (min-width: 992px) {
+        .text01 {
+          font-size: .85rem;
+          font-weight: bold;
+          line-height: 1.3rem;
+        }
       }
       
       /* wrapper-2 */
@@ -353,15 +464,17 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
-        clip-path: polygon(0 0, 100% 12rem, 100% calc(100% - 12rem), 0 100%);
+        clip-path: polygon(0 0, 100% 13rem, 100% calc(100% - 13rem), 0 100%);
         padding: 8rem 1rem;
       }
       
       .wrapper-2 .text01 {
         color: rgba(250,210,150,.8);
+        font-weight: 100;
       }
       
-      .wrapper-2 .condi-title {
+      .wrapper-2 .condi-title,
+      .wrapper-3 .condi-title {
         color: rgb(235,235,235);
       }
       
@@ -380,12 +493,13 @@
       
       .box {
         margin-top: 3rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 3.5rem;
         width: 8rem;
         height: 3rem;
         position: relative;
         left: calc(50% - 4rem);
-        border: .15rem solid rgb(110,50,0);
+        border: .15rem solid rgb(99,50,32);
+        border-bottom: none;
       }
       
       .diamond02 {
@@ -393,10 +507,18 @@
         height: 3.5rem;
         position: absolute;
         left: calc(50% - 1.75rem);
-        background: rgb(110,50,0);
+        background: rgb(99,50,32);
         clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
         top: 0;
         transform: translateY(-50%);
+      }
+      
+      .icon02 {
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        left: 15%;
+        top: 0;
       }
       
       .path-btn {
@@ -405,7 +527,7 @@
         width: 80%;
         left: 10%;
         height: 2rem;
-        border: .15rem solid rgb(110,50,0);
+        border: .15rem solid rgb(99,50,32);
         transform: translateY(50%);
         color: rgb(235,235,235);
         font-family: oswald;
@@ -413,7 +535,726 @@
         font-size: .85em;
         text-transform: uppercase;
         padding-top: .4rem;
-        background: rgb(30,10,10);
+      }
+      
+      .box::before {
+        position: absolute;
+        content: '';
+        width: 10%;
+        left: 0%;
+        bottom: 0%;
+        height: .15rem;
+        background: rgb(99,50,32);
+      }
+
+      .box::after {
+        position: absolute;
+        content: '';
+        width: 10%;
+        right: 0%;
+        bottom: 0%;
+        height: .15rem;
+        background: rgb(99,50,32);
+      }
+      
+      .path-btn::before {
+        position: absolute;
+        content: '';
+        left: 0%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(99,50,32);
+        z-index: -1;
+        clip-path: circle(0 at 0 100%);
+        transition: all .5s cubic-bezier(.55, 0, 1, 1);
+      }
+      
+      .path-btn:hover::before {
+        clip-path: circle(10rem);
+        cursor: pointer;
+      }
+      
+      .path-btn:hover {
+        cursor: pointer;
+      }
+      
+      /* wrapper-3 */
+      
+      .wrapper-3 {
+        width: 100%;
+        position: relative;
+        margin-top: -13rem;
+        padding: 10rem 1rem 10rem 1rem;
+        background-image: url(assets/pic04.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 13rem));
+        z-index: -2;
+      }
+      
+      .connect03 {
+        margin-top: -9.5rem;
+      }
+      
+      .wrapper-4 {
+        position: relative;
+      }
+      
+      .whole-wrap {
+        height: 15rem;
+        width: 15rem;
+        position: relative;
+        left: calc(50% - 7.5rem);
+        margin: 0;
+        padding: 0;
+      }
+      
+      .smaller-right.whole-wrap {
+        transform: scale(1);
+        top: 0;
+        position: relative;
+        filter: grayscale(0) contrast(1);
+      }
+      
+      .smaller-left.whole-wrap {
+        transform: scale(1);
+        top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        filter: grayscale(0) contrast(1);
+      }
+      
+      .big-wrap {
+        width: 12rem;
+        height: 15rem;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: calc(50% - 6rem);
+        clip-path: polygon(0 0, 100% 0, 100% 8rem, 50% 100%, 0 8rem);
+        overflow: hidden;
+      }
+      
+      .mount-texture {
+        height: 12rem;
+        width: 12rem;
+        background-image: url(assets/texture.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 0;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        overflow: visible;
+      }
+      
+      .hiker {
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+        width: 85%;
+        left: 7.5%;
+      }
+      
+      .name {
+        color: whitesmoke;
+        text-align: center;
+        font-family: oswald;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+      
+      .contact {
+        color: rgb(99,50,32);
+        font-size: 1.25rem;
+        text-align: center;
+        transform-origin: center center;
+        transition: all .3s ease-in-out;
+      }
+      
+      .fa-facebook-square:hover,
+      .fa-instagram:hover,
+      .fa-twitter:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        color: rgb(129,70,52);
+      }
+      
+      .arrow-wrap-right,
+      .arrow-wrap-left {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0;
+        position: absolute;
+        top: calc(100% - 5rem);
+        left: 100%;
+        padding: .4rem;
+        text-align: center;
+        transform: translateY(-50%) translateX(-100%);
+        display: none;
+      }
+      
+      .arrow-wrap-left {
+        left: 0;
+        padding-right: 3.4rem;
+        z-index: 100;
+        transform: translateX(0) translateY(-50%);
+      }
+      
+      .smaller-right .fixed-left-arr,
+      .smaller-right .fixed-right-arr,
+      .smaller-right .left-arr,
+      .smaller-right .right-arr {  
+        font-size: 0;
+      }
+
+      .smaller-left .fixed-left-arr,
+      .smaller-left .fixed-right-arr,
+      .smaller-left .left-arr,
+      .smaller-left .right-arr {  
+        font-size: 0;
+      }
+      
+      .fixed-left-arr,
+      .fixed-right-arr,
+      .right-arr,
+      .left-arr {
+        color: rgb(72,59,47);
+        font-size: 3rem;
+        position: absolute;
+        transform: scaleY(1.4);
+      }
+      
+      @media (min-width: 528px) {
+        .whole-wrap {
+          width: 20rem;
+          height: 20rem;
+          left: calc(50% - 10rem);
+        }
+
+        .big-wrap {
+          width: 15rem;
+          height: 20rem;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          left: calc(50% - 7.5rem);
+          clip-path: polygon(0 0, 100% 0, 100% 12.5rem, 50% 100%, 0 12.5rem);
+          overflow: hidden;
+        }
+
+        .mount-texture {
+          height: 15rem;
+          width: 15rem;
+      }
+      
+      @media (min-width: 768px) {
+
+        .arrow-wrap-right,
+        .arrow-wrap-left {
+          display: block;
+        }
+        
+        .whole-wrap {
+          width: 20rem;
+          height: 20rem;
+          left: calc(50% - 10rem);
+        }
+        
+        .big-wrap {
+          width: 15rem;
+          height: 20rem;
+          left: calc(50% - 7.5rem);
+          clip-path: polygon(0 0, 100% 0, 100% 13.5rem, 50% 100%, 0 13.5rem);
+        }
+        
+        .mount-texture {
+          width: 15rem;
+          height: 15rem;
+        }
+
+        .arrow-wrap-right,
+        .arrow-wrap-left {
+          top: calc(100% - 7.5rem); 
+        }
+
+        .smaller-right.whole-wrap {
+          left: calc(100% - 20rem);
+          transform: scale(.75);
+          top: 20rem;
+          position: absolute;
+          filter: grayscale(.65) contrast(1.075);
+        }
+
+        .smaller-left.whole-wrap {
+          left: 0;
+          transform: scale(.75);
+          top: 20rem;
+          position: absolute;
+          filter: grayscale(.65) contrast(1.075);
+        }
+        
+        .plus-name-row {
+          display: none;
+        }
+      }
+      
+      @media (min-width: 992px) {        
+        .whole-wrap {
+          width: 22.5rem;
+          height: 22.5rem;
+          left: calc(50% - 11.25rem);
+        }
+        
+        .big-wrap {
+          width: 18rem;
+          height: 22.5rem;
+          left: calc(50% - 9rem);
+          clip-path: polygon(0 0, 100% 0, 100% 13.5rem, 50% 100%, 0 13.5rem);
+        }
+        
+        .mount-texture {
+          width: 18rem;
+          height: 18rem;
+        }
+
+        .arrow-wrap-right,
+        .arrow-wrap-left {
+          top: calc(100% - 9rem); 
+        }
+
+        .smaller-right.whole-wrap {
+          left: calc(100% - 22.5rem);
+          transform: scale(.75);
+          top: 20rem;
+          position: absolute;
+          filter: grayscale(.65) contrast(1.075);
+        }
+
+        .smaller-left.whole-wrap {
+          left: 0;
+          transform: scale(.75);
+          top: 20rem;
+          position: absolute;
+          filter: grayscale(.65) contrast(1.075);
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        .whole-wrap {
+          width: 25rem;
+          height: 25rem;
+          left: calc(50% - 12.5rem);
+        }
+        
+        .big-wrap {
+          width: 20rem;
+          height: 25rem;
+          left: calc(50% - 10rem);
+          clip-path: polygon(0 0, 100% 0, 100% 15rem, 50% 100%, 0 15rem);
+        }
+        
+        .mount-texture {
+          width: 20rem;
+          height: 20rem;
+        }
+
+        .arrow-wrap-right,
+        .arrow-wrap-left {
+          top: calc(100% - 10rem); 
+        }
+
+        .smaller-right.whole-wrap {
+          left: calc(100% - 25rem);
+          opacity: .9;
+        }
+
+        .smaller-left.whole-wrap {
+          left: 0;
+          opacity: .9;
+        }
+      }
+      
+      @media (min-width: 1444px) {
+        .smaller-right.whole-wrap {
+          left: calc(100% - 27.5rem);
+        }
+
+        .smaller-left.whole-wrap {
+          left: calc(0% + 2.5rem);
+        }
+      }
+      
+      .arrow-wrap-right:hover .fixed-right-arr {
+        animation: fix-right-arr 2.5s cubic-bezier(.2, 1, .3, 1);
+        cursor: pointer;
+      }
+      
+      .arrow-wrap-right:hover .right-arr {
+        animation: right-arr 2.5s cubic-bezier(.2, 1, .3, 1);
+        cursor: pointer;
+      }
+
+      .arrow-wrap-left:hover .fixed-left-arr {
+        animation: fix-right-arr 2.5s cubic-bezier(.2, 1, .3, 1);
+        cursor: pointer;
+      }
+      
+      .arrow-wrap-left:hover .left-arr {
+        animation: left-arr 2.5s cubic-bezier(.2, 1, .3, 1);
+        cursor: pointer;
+      }
+      
+      @keyframes fix-right-arr {
+        5% {opacity: 0;}
+        
+        20% {opacity: .4;}
+        
+        100% {opacity: 1;}
+      }
+      
+      @keyframes right-arr {
+        0% {opacity: 1; transform: translate(0) scaleY(1.4);}
+        
+        5% {transform: translateX(-.3rem) scaleY(1.4);}
+        
+        100% {opacity: 0;transform: translateX(150%) scaleY(1.4);}
+      }
+      
+      @keyframes left-arr {
+        0% {opacity: 1;transform: translate(0) scaleY(1.4);}
+        
+        5% {transform: translateX(.3rem) scaleY(1.4);}
+        
+        100% {opacity: 0; transform: translateX(-150%) scale(1.4);}
+      }
+      
+      /* wrapper-4 */
+      
+      .wrapper-4 {
+        position: relative;
+        top: -12rem;
+        z-index: -10;
+        width: 100%;
+        padding: 10rem 1rem 1rem 1rem;
+        background-image: url(assets/pic05.jpg);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+      .img-row02 {
+        position: relative;
+        top: -2.5rem;
+        margin-bottom: -2.5rem;
+      }
+      
+      .journal-small-row.img-row02 {
+        top: 1rem;
+      }
+      
+      .journal-line {
+        height: 100%;
+        width: .1rem;
+        position: relative;
+        top: 2rem;
+        left: calc(50% - 0.05rem);
+        background: rgb(200,200,200);
+      }
+      
+      .journal-circle {
+        background: rgb(200,200,200);
+        width: .5rem;
+        height: .5rem;
+        position: relative;
+        top: 2rem;
+        left: calc(50% - .25rem);
+        border-radius: 50%;
+      }
+      
+      .first-img-col {
+        position: relative;
+        left: 2rem;
+      }
+      
+      .second-img-col {
+        position: relative;
+        left: -2rem;
+      }
+      
+      .journal-small-row .first-img-col,
+      .journal-small-row .second-img-col {
+        left: 0;
+      }
+      
+      .big-img-wrap {
+        width: auto;
+        height: auto;
+        padding: .25rem;
+        position: relative;
+        transition: all .3s ease-in-out;
+        box-sizing: border-box;
+      }
+
+      .img-journal {
+        clip-path: polygon(0 0, 95% 0, 95% 1.5rem, 100% 2rem, 95% 2.5rem, 95% 100%, 0 100%);
+        border-radius: .2rem;
+        position: relative;
+        outline-offset: .75rem;
+        outline-color: rgb(200,200,200);
+        outline-width: .1rem;
+        outline-style: solid;
+        transition: filter .3s ease-in-out;
+      }
+      
+      .img-journal02 {
+        clip-path: polygon(5% 0, 100% 0, 100% 100%, 5% 100%, 5% 2.5rem, 0 2rem, 5% 1.5rem);
+      }
+      
+      .journal-small-row .img-journal {
+        clip-path: polygon(5% 0, 100% 0, 100% 100%, 5% 100%, 5% 2.5rem, 0 2rem, 5% 1.5rem);
+      }
+      
+      .first-img-col:hover .play-wrap {
+        opacity: 1;
+      }
+      
+      .play-wrap {
+        width: 2rem;
+        height: 2rem;
+        border: .25rem solid rgb(200,200,200);
+        border-radius: 50%;
+        position: absolute;
+        top: calc(50% - 1rem);
+        left: calc(50% - 1rem);
+        z-index: 15;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+      }
+      
+      @media (min-width: 528px) {
+        .play-wrap {
+          width: 4rem;
+          height: 4rem;
+          left: calc(50% - 2rem);
+          top: calc(50% - 2rem);
+        }
+      }
+      
+      .img-txt-col {
+        position: absolute;
+        bottom: 0.75rem;
+        z-index: 10;
+        padding: 0 1.5rem;
+      }
+      
+      @media (min-width: 768px) {
+        .img-txt-col {
+          padding: 0 2.5rem;
+        }
+      }
+      
+      .img-title, .img-little-title {
+        font-family: oswald;
+        font-size: 2rem;
+        text-align: right;
+        text-transform: uppercase;
+        color: white;
+        right: 1.5rem;
+      }
+      
+      .img-little-title {
+        font-family: merriweather;
+        font-size: 1rem;
+      }
+      
+      .small-img {
+        border: .1rem solid rgb(200,200,200);
+        padding: .25rem;
+        border-radius: .2rem;
+      }
+      
+      .left-small-img,
+      .right-small-img {
+        position: relative;
+        z-index:-10;
+        animation: non-hover-img .5s cubic-bezier(0, 0, .46, 1); 
+        animation-fill-mode: both;
+      }
+      
+      .right-small-img {
+        animation-delay: .15s;
+      }
+      
+      .first-img-col:hover .right-small-img {
+        animation-name: right-img;
+        animation-duration: .5s;
+        animation-delay: .15s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+        animation-direction: normal;
+        animation-timing-function: cubic-bezier(.55, 0, 1, 1);
+      }
+      
+      .first-img-col:hover .left-small-img {
+        animation-name: right-img;
+        animation-duration: .5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+        animation-direction: normal;
+        animation-timing-function: cubic-bezier(.55, 0, 1, 1);
+      }
+      
+      @keyframes right-img {
+        0% {transform: translateY(-150%)}
+        70% {transform: translateY(20%)}
+        85% {transform: translateY(-10%)}
+        100% {transform: translateY(0)}
+      }
+      
+      @keyframes non-hover-img {
+        0% {transform: translateY(0);}
+        15% {transform: translateY(20%);}
+        100% {transform: translateY(-150%);}
+      }
+      
+      .path-btn02 {
+        border: .2rem solid rgb(180,180,180);
+        color: rgb(180,180,180);
+        width: 10rem;
+        left: calc(50% - 5rem);
+        margin-top: 2rem;
+        position: relative;
+        transition: color .3s .3s ease;
+      }
+      
+      .path-btn02::before,
+      .path-btn02::after {
+        content: '';
+        position: absolute;
+        width: 2rem;
+        height: .2rem;
+        top: calc(50% - .1rem);
+        left: -2rem;
+        background: rgb(180,180,180);
+        clip-path: none;
+        z-index: -1;
+        transition: left .3s cubic-bezier(0,0,.46,1), height .3s .3s ease, top .3s .3s ease, width .3s ease;
+      }
+      
+      .path-btn02::after {
+        left: calc(100%);
+      }
+      
+      .path-btn02:hover:before {
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .path-btn02:hover:after {
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: 50%;
+      }
+      
+      .path-btn02:hover {
+        color: rgb(30,180,255);
+      }
+      
+      .journal-big-row {
+        display: none;
+      }
+      
+      @media (min-width: 768px) {
+        .journal-big-row {
+          display: flex;
+        }
+        
+        .journal-small-row {
+          display: none;
+        }
+      }
+      
+      /* wrapper-5 */
+      
+      .wrapper-5 {
+        width: 100%;
+        padding: 7rem 1rem 1rem 1rem;
+        background-image: url(assets/pic01.jpg);
+        background-size: cover;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        margin-top: -13rem;
+        clip-path: polygon(0 0, 50% 5rem, 100% 0, 100% 100%, 0 100%);
+      }
+      
+      @media (min-width: 992px) {
+        .wrapper-5 {
+          clip-path: polygon(0 0, 50% 13rem, 100% 0, 100% 100%, 0 100%);  
+          padding: 15rem 1rem 1rem 1rem;
+          margin-top: -18rem;
+        }
+      }
+      
+      .wrapper-5 .avatar-text {
+        font-size: 1rem;
+      }
+      
+      .btn03 {
+        position: relative;
+        width: 100%;
+        height: 2.5rem;
+        color: rgb(200,200,200);
+        border: .1rem solid rgb(200,200,200);
+        font-family: oswald;
+        font-size: 1rem;
+        text-align: center;
+        padding: .6rem;
+        text-transform: uppercase;
+        transition: all .3s cubic-bezier(.55,0,1,1);
+      }
+
+      .btn03:hover {
+        font-size: 0;
+        cursor: pointer;
+      }
+      
+      .btn03::before {
+        position: absolute;
+        content: attr(text-data);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: .6rem;
+        color: rgb(30,150,250);
+        background: rgb(200,200,200);
+        font-family: oswald;
+        text-transform: uppercase;
+        top: 0;
+        left: 0;
+        font-size: 1rem;
+        z-index: -1;
+        clip-path: circle(0 at 0 100%);
+        transition: all .3s cubic-bezier(.55, 0, 1, 1);
+      }
+      
+      .btn03:hover:before {
+        clip-path: circle(15rem);
+        cursor: pointer;
+      }
+      
+      .footer-hr {
+        background: rgb(200,200,200);
+        width: 90%;
+        height: .05rem;
+        position: relative;
+        left: 5%;
+        margin-top: 2rem;
       }
       
       .row {
@@ -424,40 +1265,40 @@
   </head>
   
   <header>
-    <div class="row justify-content-center nav-row mt-3 mb-0">
-      <div class="col-2"></div>
-      <div class="col-3 p-0 m-0">
+    <div class="row justify-content-center nav-row mt-0 mt-lg-3 mb-0">
+      <div class="col-2 empty-row"></div>
+      <div class="col-4 col-lg-3 p-0 m-0">
         <div class="row justify-content-end m-0">
-          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="STORIES">
-            <h6 class="menu-text">stories</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="STORIES">
+            <h6 class="menu-text mt-3 mt-lg-0">stories</h6>
           </div>
-          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="ADVENTURES">
-            <h6 class="menu-text">adventures</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="ADVENTURES">
+            <h6 class="menu-text mt-3 m-lg-0">adventures</h6>
           </div>
-          <div class="col-12 col-lg-4 p-0 menu-hover" data-text="LEGENDS">
-            <h6 class="menu-text">legends</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="LEGENDS">
+            <h6 class="menu-text mt-3 m-lg-0">legends</h6>
           </div>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-4 col-lg-2 p-0 pl-sm-3 pr-sm-3 pl-md-5 pr-md-5 pl-lg-0 pr-lg-0">
         <svg class="mountain" width="100%" height="100%" viewBox="5 0 60 15">
           <path d="M0,10.9h15.3l2.5,2.3l7.9-7.4l3,2.3l7.9-7.4l15.3,12.5l2.5-2.5H70" stroke="rgba(235,235,235,.9)" stroke-width=".1rem" fill="none"></path>
         </svg>
       </div>
-      <div class="col-3 p-0 m-0">
+      <div class="col-4 col-lg-3 p-0 m-0">
         <div class="row justify-content-start m-0">
-          <div class="col-4 p-0 menu-hover" data-text="EXPERIMENT">
-            <h6 class="menu-text">experiment</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="EXPERIMENT">
+            <h6 class="menu-text mt-3 m-lg-0">experiment</h6>
           </div>
-          <div class="col-4 p-0 menu-hover" data-text="TEAM">
-            <h6 class="menu-text">team</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="TEAM">
+            <h6 class="menu-text mt-3 m-lg-0">team</h6>
           </div>
-          <div class="col-4 p-0 menu-hover" data-text="EVENTS">
-            <h6 class="menu-text">events</h6>
+          <div class="col-12 col-md-4 p-0 menu-hover" data-text="EVENTS">
+            <h6 class="menu-text mt-3 m-lg-0">events</h6>
           </div>
         </div>
       </div>
-      <div class="col-2 p-0 m-0">
+      <div class="col-6 col-lg-2 empty-row p-0 mt-3 m-lg-0">
         <div class="row">
           <div class="col-6 p-0">
             <h6 class="menu-text register">sign up</h6>
@@ -469,15 +1310,24 @@
       </div>
     </div>
     
-    <div class="row mt-0 mb-5">
+    <div class="row mt-3 mb-3 mb-lg-5">
       <div class="col-12">
         <h5 class="mountain-title">great adventure</h5>
       </div>
     </div>
+
+    <div class="row mb-5 register-row">
+      <div class="col-6 p-0 m-0">
+        <h6 class="menu-text register">sign up</h6>
+      </div>
+      <div class="col-6 p-0 m-0">
+        <h6 class="menu-text" style="text-align: left;">log in</h6>
+      </div>
+    </div>
     
     <div class="row justify-content-center mt-5">
-      <div class="col-1"></div>
-      <div class="col-10">
+      <div class="col-1 empty-row"></div>
+      <div class="col-12 col-lg-10">
         <div class="row justify-content-center">
           <div class="col-12">
             <p class="small-text">A story from <strong>Henrik</strong></p>
@@ -491,7 +1341,7 @@
         </div>
     </div>
     </div>
-      <div class="col-1">
+      <div class="col-1 empty-row">
         <div class="diamond-filled">I</div>
         <div class="vertical-line"></div>
         <div class="diamond-filled diamond"></div>
@@ -503,7 +1353,7 @@
     </div>
     
     <div class="row justify-content-center">
-      <div class="col-2">
+      <div class="col-6 col-lg-2">
         <div class="avatar"></div>
         <p class="avatar-text mt-2">Featured story<br><strong>John Doe</strong></p>
       </div>
@@ -535,11 +1385,11 @@
       </div>
     </div>
     
-    <div class="row justify-content-center mt-5">
-      <div class="col-4 p-0 mr-3">
+    <div class="row justify-content-center mt-5 pr-3 pl-3 p-lg-0">
+      <div class="col-12 col-md-10 col-lg-6 col-xl-4 p-0 pr-lg-3 pl-lg-3 mb-3 mb-lg-0">
         <p class="text01">Lorem ipsum dolor sit amet, aliquid intellegebat cu nec, ex porro dicit graecis est. Mutat constituam an pro, iriure offendit et sea, eos elitr solet veritus no. Errem ancillae ne ius, te sed vocibus deleniti. Usu nisl tollit ornatus no, tempor maiestatis vel ea, graeco insolens democritum et sea. Qui saperet euripidis no, ferri laudem cu vix, facer constituam id his.</p>
       </div>
-      <div class="col-4 p-0 ml-3">
+      <div class="col-12 col-md-10 col-lg-6 col-xl-4 p-0 pl-lg-3 pr-lg-3">
         <p class="text01">Nec et nihil verear. Regione partiendo vim at. Quo albucius vulputate et, an eos posse viris, et mel falli essent sensibus. Cu ius sonet libris, vis agam dolor affert no, ignota nusquam efficiendi an his. In sea nobis iriure intellegebat, quo cu solet tation commune, diam oblique in quo.</p>
       </div>
     </div>
@@ -571,17 +1421,252 @@
     </div>
     
     <div class="row justify-content-center mt-4">
-      <div class="col-5 p-0 ml-3">
-        <p class="text01">Nec et nihil verear. Regione partiendo vim at. Quo albucius vulputate et, an eos posse viris, et mel falli essent sensibus. Cu ius sonet libris, vis agam dolor affert no, ignota nusquam efficiendi an his. In sea nobis iriure intellegebat, quo cu solet tation commune, diam oblique in quo.</p>
+      <div class="col-12 col-md-10 col-lg-6 col-xl-4 pl-3 pr-3 p-lg-0 ml-3">
+        <p class="text01">Nec et nihil verear. Regione partiendo vim at. Quo albucius vulputate et, an eos posse viris, et mel falli essent sensibus. Cu ius sonet libris, vis agam dolor affert no, ignota nusquam efficiendi an his. In sea nobis iriure intellegebat, quo cu solet tation commune, diam oblique in quo. Errem ancillae ne ius, te sed vocibus deleniti. Usu nisl tollit ornatus no, tempor maiestatis vel ea, graeco insolens democritum et sea.</p>
       </div>
     </div>
     
     <div class="box">
-      <div class="diamond02"></div>
+      <div class="diamond02"><img class="img-fluid icon02" src="assets/icon02.png" alt=""></div>
       <div class="path-btn">get the route</div>
     </div>
   </div>
   
+    <div class="connect connect03">
+      <div class="circle"></div>
+      <div class="line02 line03"></div>
+      <div class="circle"></div>
+    </div>
+  
+  <div class="wrapper-3">
+    <div class="row justify-content-center">
+      <div class="col-7">
+        <h5 class="num">03</h5>
+        <p class="small-text" style="color: rgb(200,200,200);">Chapter</p>
+      </div>
+      <div class="col-12">
+        <h2 class="condi-title">the team</h2>
+      </div>
+    </div>
+  
+      <div class="whole-wrap smaller-left">
+        <div class="arrow-wrap-left">
+          <i class="fas fa-angle-left fixed-left-arr"></i>
+          <i class="fas fa-angle-left left-arr"></i>
+        </div>
+        <div class="big-wrap">  
+          <img class="img-fluid hiker" src="assets/hiker01.png" alt="">
+          <div class="mount-texture"></div>
+        </div>
+        <div class="arrow-wrap-right">
+          <i class="fas fa-angle-right fixed-right-arr"></i>
+          <i class="fas fa-angle-right right-arr"></i>
+        </div>
+      </div>
+    
+    <div class="row justify-content-center plus-name-row">
+      <div class="col-10 col-lg-4">
+        <h3 class="name mt-3">Ben Doe</h3>
+        <p class="contact mt-3"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter ml-4"></i><i class="ml-4 fab fa-instagram"></i></p
+      </div>
+    </div>
+    </div>
+      
+      <div class="whole-wrap">
+        <div class="arrow-wrap-left">
+          <i class="fas fa-angle-left fixed-left-arr"></i>
+          <i class="fas fa-angle-left left-arr"></i>
+        </div>
+        <div class="big-wrap">  
+          <img class="img-fluid hiker" src="assets/hiker02.png" alt="">
+          <div class="mount-texture"></div>
+        </div>
+        <div class="arrow-wrap-right">
+          <i class="fas fa-angle-right fixed-right-arr"></i>
+          <i class="fas fa-angle-right right-arr"></i>
+        </div>
+      </div>
+
+    <div class="row justify-content-center mb-md-5">
+      <div class="col-10 col-lg-4">
+        <h3 class="name mt-3">John Doe</h3>
+        <p class="contact mt-3"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter ml-4"></i><i class="ml-4 fab fa-instagram"></i></p
+      </div>
+    </div>
+    </div>
+      
+      <div class="whole-wrap smaller-right">
+        <div class="arrow-wrap-left">
+          <i class="fas fa-angle-left fixed-left-arr"></i>
+          <i class="fas fa-angle-left left-arr"></i>
+        </div>
+        <div class="big-wrap">  
+          <img class="img-fluid hiker" src="assets/hiker03.png" alt="">
+          <div class="mount-texture"></div>
+        </div>
+        <div class="arrow-wrap-right">
+          <i class="fas fa-angle-right fixed-right-arr"></i>
+          <i class="fas fa-angle-right right-arr"></i>
+        </div>
+      </div>
+      
+    <div class="row justify-content-center mb-5 plus-name-row">
+      <div class="col-10 col-lg-4">
+        <h3 class="name mt-3">Jane Doe</h3>
+        <p class="contact mt-3"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter ml-4"></i><i class="ml-4 fab fa-instagram"></i></p
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <div class="connect connect03">
+      <div class="circle"></div>
+      <div class="line02 line03"></div>
+      <div class="circle"></div>
+    </div>
+
+    <div class="wrapper-4">
+    <div class="row justify-content-center">
+      <div class="col-7">
+        <h5 class="num">04</h5>
+        <p class="small-text" style="color: rgb(200,200,200);">Chapter</p>
+      </div>
+      <div class="col-12 mb-5">
+        <h2 class="condi-title">journal</h2>
+      </div>
+    </div>
+      
+      <div class="row justify-content-center journal-img-row journal-big-row">
+        <div class="col-md-5 col-lg-4 first-img-col">
+          <div class="big-img-wrap">
+            <div class="play-wrap"></div>
+            <img class="img-fluid img-journal" src="assets/journal05.jpg" alt="">
+            <div class="row">
+              <div class="col-12 img-txt-col">
+                <p class="img-title">day 1</p>
+                <p class="img-little-title">Lorem Ipsum Dolor</p>
+              </div>
+            </div>
+          </div>
+          <div class="row p-0 mt-3">
+            <div class="col-6 pl-1 pr-4">
+              <img class="img-fluid small-img left-small-img" src="assets/journal01.jpg" alt="">
+            </div>
+            <div class="col-6 pl-1 pr-4">
+              <img class="img-fluid small-img right-small-img" src="assets/journal03.jpg" alt="">
+            </div>
+              
+          </div>
+        </div>
+        <div class="col-1">
+          <div class="journal-circle"></div>
+          <div class="journal-line"></div>
+        </div>
+        <div class="col-md-5 col-lg-4"></div>
+      </div>
+
+      <div class="row justify-content-center journal-img-row img-row02 journal-big-row">
+        <div class="col-md-5 col-lg-4"></div>
+        <div class="col-1 pm-5">
+          <div class="journal-circle"></div>
+          <div class="journal-line" style="height: calc(100% - 2rem);"></div>
+        </div>
+        <div class="col-5 col-lg-4 first-img-col second-img-col">
+          <div class="big-img-wrap">
+            <div class="play-wrap"></div>
+            <img class="img-fluid img-journal img-journal02" src="assets/journal02.jpg" alt="">
+            <div class="row">
+              <div class="col-12 img-txt-col">
+                <p class="img-title">day 2</p>
+                <p class="img-little-title">Lorem Ipsum Dolor</p>
+              </div>
+            </div>
+          </div>
+          <div class="row p-0 mt-3">
+            <div class="col-6 pr-1 pl-4">
+              <img class="img-fluid small-img left-small-img" src="assets/journal04.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center journal-img-row journal-small-row">
+        <div class="col-1 pl-0">
+          <div class="journal-circle"></div>
+          <div class="journal-line"></div>
+        </div>
+        <div class="col-10 first-img-col">
+          <div class="big-img-wrap">
+            <div class="play-wrap"></div>
+            <img class="img-fluid img-journal" src="assets/journal05.jpg" alt="">
+            <div class="row">
+              <div class="col-12 img-txt-col">
+                <p class="img-title">day 1</p>
+                <p class="img-little-title">Lorem Ipsum Dolor</p>
+              </div>
+            </div>
+          </div>
+          <div class="row p-0 mt-3">
+            <div class="col-6 pr-1 pl-4 pl-sm-5">
+              <img class="img-fluid small-img left-small-img" src="assets/journal01.jpg" alt="">
+            </div>
+            <div class="col-6 pl-1 pr-4 pl-sm-4">
+              <img class="img-fluid small-img right-small-img" src="assets/journal03.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center journal-img-row img-row02 journal-small-row mb-5">
+        <div class="col-1 pm-5 pl-0">
+          <div class="journal-circle"></div>
+          <div class="journal-line" style="height: calc(100% - 2rem);"></div>
+        </div>
+        <div class="col-10 first-img-col second-img-col">
+          <div class="big-img-wrap">
+            <div class="play-wrap"></div>
+            <img class="img-fluid img-journal img-journal02" src="assets/journal02.jpg" alt="">
+            <div class="row">
+              <div class="col-12 img-txt-col">
+                <p class="img-title">day 2</p>
+                <p class="img-little-title">Lorem Ipsum Dolor</p>
+              </div>
+            </div>
+          </div>
+          <div class="row p-0 mt-3">
+            <div class="col-6 pr-1 pl-4 pl-sm-5">
+              <img class="img-fluid small-img left-small-img" src="assets/journal04.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="path-btn path-btn02 mt-5">explore the journal</div>
+      
+    </div>
+  
+  <div class="wrapper-5">
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 mt-3 mb-4">
+        <p class="avatar-text">What do you want to do?</p>
+      </div>
+      <div class="col-12 col-sm-8 col-md-5 col-lg-3">
+        <div class="btn03" text-data="share this story">share this story</div>
+      </div>
+      <div class="col-12 col-md-1 align-self-center mt-3 mb-3 m-md-0">
+        <p class="avatar-text">or</p>
+      </div>
+      <div class="col-12 col-sm-8 col-md-5 col-lg-3">
+        <div class="btn03" text-data="create yout story">create your story</div>
+      </div>
+    </div>
+    <div class="footer-hr"></div>
+    <div class="row">
+      <div class="col-12 mt-3">
+        <p class="avatar-text" style="font-size: .75rem;">Copyright &copy; 2018-</p>
+      </div>
+    </div>
+  </div>
   <body>
     
      <!-- Optional JavaScript --> 
