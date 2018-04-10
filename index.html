@@ -567,7 +567,7 @@
         background: rgb(99,50,32);
         z-index: -1;
         clip-path: circle(0 at 0 100%);
-        transition: all .5s cubic-bezier(.55, 0, 1, 1);
+        transition: all .5s cubic-bezier(.55, 0, .46,1);
       }
       
       .path-btn:hover::before {
@@ -602,6 +602,12 @@
         position: relative;
       }
       
+      .rotate-place {
+        width: 100%;
+        height: 60rem;
+        position: relative;
+      }
+      
       .whole-wrap {
         height: 15rem;
         width: 15rem;
@@ -609,6 +615,10 @@
         left: calc(50% - 7.5rem);
         margin: 0;
         padding: 0;
+        transition: all .5s cubic-bezier(.55,0,.46,1);
+        transition-delay: .7s;
+        top: 0;
+        z-index: 10;
       }
       
       .smaller-right.whole-wrap {
@@ -616,6 +626,9 @@
         top: 0;
         position: relative;
         filter: grayscale(0) contrast(1);
+        transition: all .5s cubic-bezier(.55,0,.46,1);
+        transition-delay: .7s;
+        z-index: 9;
       }
       
       .smaller-left.whole-wrap {
@@ -624,6 +637,7 @@
         margin-bottom: 2rem;
         position: relative;
         filter: grayscale(0) contrast(1);
+        z-index: 9;
       }
       
       .big-wrap {
@@ -703,20 +717,6 @@
         transform: translateX(0) translateY(-50%);
       }
       
-      .smaller-right .fixed-left-arr,
-      .smaller-right .fixed-right-arr,
-      .smaller-right .left-arr,
-      .smaller-right .right-arr {  
-        font-size: 0;
-      }
-
-      .smaller-left .fixed-left-arr,
-      .smaller-left .fixed-right-arr,
-      .smaller-left .left-arr,
-      .smaller-left .right-arr {  
-        font-size: 0;
-      }
-      
       .fixed-left-arr,
       .fixed-right-arr,
       .right-arr,
@@ -727,7 +727,15 @@
         transform: scaleY(1.4);
       }
       
+      .change-name-row {
+        display: none;
+      }
+      
       @media (min-width: 528px) {
+        .rotate-place {
+          height: 75rem;
+        }
+        
         .whole-wrap {
           width: 20rem;
           height: 20rem;
@@ -752,16 +760,24 @@
       }
       
       @media (min-width: 768px) {
+        .rotate-place {
+          height: 20rem;
+        }
 
         .arrow-wrap-right,
         .arrow-wrap-left {
           display: block;
         }
         
+        .change-name-row {
+          display: flex;
+        }
+        
         .whole-wrap {
           width: 20rem;
           height: 20rem;
           left: calc(50% - 10rem);
+          position: absolute;
         }
         
         .big-wrap {
@@ -783,18 +799,18 @@
 
         .smaller-right.whole-wrap {
           left: calc(100% - 20rem);
-          transform: scale(.75);
-          top: 20rem;
+          transform: scale(.7);
           position: absolute;
           filter: grayscale(.65) contrast(1.075);
+          top: -2rem;
         }
 
         .smaller-left.whole-wrap {
           left: 0;
-          transform: scale(.75);
-          top: 20rem;
+          transform: scale(.7);
           position: absolute;
           filter: grayscale(.65) contrast(1.075);
+          top: -2rem;
         }
         
         .plus-name-row {
@@ -803,6 +819,10 @@
       }
       
       @media (min-width: 992px) {        
+        .rotate-place {
+          height: 22.5rem;
+        }
+        
         .whole-wrap {
           width: 22.5rem;
           height: 22.5rem;
@@ -829,7 +849,6 @@
         .smaller-right.whole-wrap {
           left: calc(100% - 22.5rem);
           transform: scale(.75);
-          top: 20rem;
           position: absolute;
           filter: grayscale(.65) contrast(1.075);
         }
@@ -837,13 +856,16 @@
         .smaller-left.whole-wrap {
           left: 0;
           transform: scale(.75);
-          top: 20rem;
           position: absolute;
           filter: grayscale(.65) contrast(1.075);
         }
       }
       
       @media (min-width: 1200px) {
+        .rotate-place {
+          height: 25rem;
+        }
+        
         .whole-wrap {
           width: 25rem;
           height: 25rem;
@@ -932,6 +954,34 @@
         100% {opacity: 0; transform: translateX(-150%) scale(1.4);}
       }
       
+      @keyframes arrow-wrap-left {
+        0% {transform: translateX(0) translateY(-50%) scale(1);}
+        20% {transform: translateX(0) translateY(-50%) scale(1.2);}
+        40% {transform: translateX(0) translateY(-50%) scale(1);}
+        100% {transform: translateX(10rem) translateY(-50%) scale(0) }
+      }
+      
+      @keyframes arrow-wrap-right {
+        0% {transform: translateX(-100%) translateY(-50%) scale(1);}
+        20% {transform: translateX(-100%) translateY(-50%) scale(1.2);}
+        40% {transform: translateX(-100%) translateY(-50%) scale(1);}
+        100% {transform: translateX(-10rem) translateY(-50%) scale(0);}
+      }
+      
+      .smaller-left .arrow-wrap-left,
+      .smaller-right .arrow-wrap-left {
+        animation: arrow-wrap-left 1s cubic-bezier(.55,0,1,1);
+        animation-fill-mode: both;
+        z-index: -10;
+      }
+
+      .smaller-left .arrow-wrap-right,
+      .smaller-right .arrow-wrap-right {
+        animation: arrow-wrap-right 1s cubic-bezier(.55,0,1,1);
+        animation-fill-mode: both;
+        z-index: -10;
+      }
+      
       /* wrapper-4 */
       
       .wrapper-4 {
@@ -957,7 +1007,7 @@
       }
       
       .journal-line {
-        height: 100%;
+        height: 105%;
         width: .1rem;
         position: relative;
         top: 2rem;
@@ -978,6 +1028,10 @@
       .first-img-col {
         position: relative;
         left: 2rem;
+      }
+      
+      .first-img-col:hover {
+        cursor: pointer;
       }
       
       .second-img-col {
@@ -1008,6 +1062,7 @@
         outline-width: .1rem;
         outline-style: solid;
         transition: filter .3s ease-in-out;
+        z-index: -1;
       }
       
       .img-journal02 {
@@ -1018,30 +1073,55 @@
         clip-path: polygon(5% 0, 100% 0, 100% 100%, 5% 100%, 5% 2.5rem, 0 2rem, 5% 1.5rem);
       }
       
-      .first-img-col:hover .play-wrap {
-        opacity: 1;
+      .play {
+        width: 100%;
+        position: relative;
+        height: 100%;
+        background: blue;
+        opacity: 0;
+        z-index: 10;
       }
       
-      .play-wrap {
-        width: 2rem;
-        height: 2rem;
-        border: .25rem solid rgb(200,200,200);
-        border-radius: 50%;
+      .svg,
+      .journal-small-row .svg{
         position: absolute;
-        top: calc(50% - 1rem);
-        left: calc(50% - 1rem);
-        z-index: 15;
-        opacity: 0;
-        transition: all .3s ease-in-out;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
+      
+      #shape {
+        fill:none;
+        stroke: rgb(200,200,200);
+        stroke-width: .3rem;
+      }
+      
+      .fa-play {
+        color: rgb(200,200,200);
+        position: absolute;
+        font-size: 2rem;
+        top: calc(50%);
+        left: calc(50%);
+        transform: translateX(-50%) translateY(-50%) scale(0);
+        transform-origin: center center;
+        transition: all 1s ease;
+        transition-delay: .5s;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .journal-small-row .fa-play {
+        font-size: 1rem;
       }
       
       @media (min-width: 528px) {
-        .play-wrap {
-          width: 4rem;
-          height: 4rem;
-          left: calc(50% - 2rem);
-          top: calc(50% - 2rem);
+        .journal-small-row .fa-play {
+          font-size: 2.75rem;
         }
+      }
+      
+      .first-img-col:hover .fa-play {
+        transform: translateX(-50%) translateY(-50%) scale(1);
       }
       
       .img-txt-col {
@@ -1450,7 +1530,8 @@
       </div>
     </div>
   
-      <div class="whole-wrap smaller-left">
+    <div class="rotate-place mb-5 mb-md-0">
+      <div id="whole-wrap-2" class="whole-wrap smaller-left">
         <div class="arrow-wrap-left">
           <i class="fas fa-angle-left fixed-left-arr"></i>
           <i class="fas fa-angle-left left-arr"></i>
@@ -1473,7 +1554,7 @@
     </div>
     </div>
       
-      <div class="whole-wrap">
+      <div id="whole-wrap-1" class="whole-wrap">
         <div class="arrow-wrap-left">
           <i class="fas fa-angle-left fixed-left-arr"></i>
           <i class="fas fa-angle-left left-arr"></i>
@@ -1488,7 +1569,7 @@
         </div>
       </div>
 
-    <div class="row justify-content-center mb-md-5">
+    <div class="row justify-content-center plus-name-row">
       <div class="col-10 col-lg-4">
         <h3 class="name mt-3">John Doe</h3>
         <p class="contact mt-3"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter ml-4"></i><i class="ml-4 fab fa-instagram"></i></p
@@ -1496,7 +1577,7 @@
     </div>
     </div>
       
-      <div class="whole-wrap smaller-right">
+      <div id="whole-wrap-3" class="whole-wrap smaller-right">
         <div class="arrow-wrap-left">
           <i class="fas fa-angle-left fixed-left-arr"></i>
           <i class="fas fa-angle-left left-arr"></i>
@@ -1518,6 +1599,15 @@
       </div>
     </div>
   </div>
+    </div>
+
+    <div class="row justify-content-center mb-md-5 change-name-row">
+      <div class="col-10 col-lg-4">
+        <h3 class="name mt-3" id="changing-name">John Doe</h3>
+        <p class="contact mt-3"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter ml-4"></i><i class="ml-4 fab fa-instagram"></i></p
+      </div>
+    </div>
+    </div>
   </div>
 
     <div class="connect connect03">
@@ -1540,7 +1630,26 @@
       <div class="row justify-content-center journal-img-row journal-big-row">
         <div class="col-md-5 col-lg-4 first-img-col">
           <div class="big-img-wrap">
-            <div class="play-wrap"></div>
+              <svg class="svg" id="hover">
+                <circle id="shape" cx="48%" cy="48%" r="10%" stroke-dasharray="600" stroke-dashoffset="600">
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="600"
+                           to="0"
+                           dur="1s"
+                           begin="hover.mouseover + .5s"
+                           fill="freeze"></animate>
+                  
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="0"
+                           to="600"
+                           dur="1s"
+                           begin="hover.mouseout + 0s"
+                           fill="freeze"></animate>
+                </circle>
+                <i class="fas fa-play"></i>
+              </svg>
             <img class="img-fluid img-journal" src="assets/journal05.jpg" alt="">
             <div class="row">
               <div class="col-12 img-txt-col">
@@ -1574,7 +1683,26 @@
         </div>
         <div class="col-5 col-lg-4 first-img-col second-img-col">
           <div class="big-img-wrap">
-            <div class="play-wrap"></div>
+              <svg class="svg" id="hover02">
+                <circle id="shape" cx="48%" cy="48%" r="10%" stroke-dasharray="600" stroke-dashoffset="600">
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="600"
+                           to="0"
+                           dur="1s"
+                           begin="hover02.mouseover + .5s"
+                           fill="freeze"></animate>
+                  
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="0"
+                           to="600"
+                           dur="1s"
+                           begin="hover02.mouseout + 0s"
+                           fill="freeze"></animate>
+                </circle>
+                <i class="fas fa-play"></i>
+              </svg>
             <img class="img-fluid img-journal img-journal02" src="assets/journal02.jpg" alt="">
             <div class="row">
               <div class="col-12 img-txt-col">
@@ -1598,7 +1726,26 @@
         </div>
         <div class="col-10 first-img-col">
           <div class="big-img-wrap">
-            <div class="play-wrap"></div>
+              <svg class="svg" id="hover03">
+                <circle id="shape" cx="48%" cy="48%" r="10%" stroke-dasharray="600" stroke-dashoffset="600">
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="600"
+                           to="0"
+                           dur="1s"
+                           begin="hover03.mouseover + .5s"
+                           fill="freeze"></animate>
+                  
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="0"
+                           to="600"
+                           dur="1s"
+                           begin="hover03.mouseout + 0s"
+                           fill="freeze"></animate>
+                </circle>
+                <i class="fas fa-play"></i>
+              </svg>
             <img class="img-fluid img-journal" src="assets/journal05.jpg" alt="">
             <div class="row">
               <div class="col-12 img-txt-col">
@@ -1625,7 +1772,26 @@
         </div>
         <div class="col-10 first-img-col second-img-col">
           <div class="big-img-wrap">
-            <div class="play-wrap"></div>
+              <svg class="svg" id="hover04">
+                <circle id="shape" cx="48%" cy="48%" r="10%" stroke-dasharray="600" stroke-dashoffset="600">
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="600"
+                           to="0"
+                           dur="1s"
+                           begin="hover04.mouseover + .5s"
+                           fill="freeze"></animate>
+                  
+                  <animate
+                           attributeName="stroke-dashoffset"
+                           from="0"
+                           to="600"
+                           dur="1s"
+                           begin="hover04.mouseout + 0s"
+                           fill="freeze"></animate>
+                </circle>
+                <i class="fas fa-play"></i>
+              </svg>
             <img class="img-fluid img-journal img-journal02" src="assets/journal02.jpg" alt="">
             <div class="row">
               <div class="col-12 img-txt-col">
@@ -1669,6 +1835,75 @@
     </div>
   </div>
   <body>
+    
+    <script>
+      window.onload = function() {
+        
+        $('.arrow-wrap-left').on('click', function() {
+          if($('#whole-wrap-1').hasClass('smaller-left') === true) {
+            $('#whole-wrap-1').addClass('smaller-right');
+            $('#whole-wrap-1').removeClass('smaller-left');
+          } else if ($('#whole-wrap-1').hasClass('smaller-right') === true) {
+            $('#whole-wrap-1').removeClass('smaller-right');
+            $("#changing-name").html('john doe')
+          } else {
+            $('#whole-wrap-1').addClass('smaller-left');
+          }
+
+          if($('#whole-wrap-2').hasClass('smaller-left') == true) {
+            $('#whole-wrap-2').addClass('smaller-right');
+            $('#whole-wrap-2').removeClass('smaller-left');
+          } else if ($('#whole-wrap-2').hasClass('smaller-right') == true) {
+            $('#whole-wrap-2').removeClass('smaller-right');
+            $('#changing-name').html('ben doe');
+          } else {
+            $('#whole-wrap-2').addClass('smaller-left');
+          }
+          
+          if($('#whole-wrap-3').hasClass('smaller-left') == true) {
+            $('#whole-wrap-3').addClass('smaller-right');
+            $('#whole-wrap-3').removeClass('smaller-left');
+          } else if ($('#whole-wrap-3').hasClass('smaller-right') == true) {
+            $('#whole-wrap-3').removeClass('smaller-right');
+            $('#changing-name').html('jane doe');
+          } else {
+            $('#whole-wrap-3').addClass('smaller-left');
+          }
+        })
+        
+        $('.arrow-wrap-right').on('click', function() {
+          if($('#whole-wrap-1').hasClass('smaller-left') === true) {
+            $('#whole-wrap-1').removeClass('smaller-left');
+            $('#changing-name').html('john doe');
+          } else if ($('#whole-wrap-1').hasClass('smaller-right') === true) {
+            $('#whole-wrap-1').removeClass('smaller-right');
+            $('#whole-wrap-1').addClass('smaller-left');
+          } else {
+            $('#whole-wrap-1').addClass('smaller-right');
+          }
+
+          if($('#whole-wrap-2').hasClass('smaller-left') == true) {
+            $('#whole-wrap-2').removeClass('smaller-left');
+            $('#changing-name').html('ben doe');
+          } else if ($('#whole-wrap-2').hasClass('smaller-right') == true) {
+            $('#whole-wrap-2').removeClass('smaller-right');
+            $('#whole-wrap-2').addClass('smaller-left');
+          } else {
+            $('#whole-wrap-2').addClass('smaller-right');
+          }
+          
+          if($('#whole-wrap-3').hasClass('smaller-left') == true) {
+            $('#whole-wrap-3').removeClass('smaller-left');
+            $('#changing-name').html('jane doe');
+          } else if ($('#whole-wrap-3').hasClass('smaller-right') == true) {
+            $('#whole-wrap-3').removeClass('smaller-right');
+            $('#whole-wrap-3').addClass('smaller-left');
+          } else {
+            $('#whole-wrap-3').addClass('smaller-right');
+          }
+        })
+      }
+    </script>
     
      <!-- Optional JavaScript --> 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
